@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "personalaiagent"
+version = "0.1.0"
+description = "AI agent to automate daily tasks locally on your computer!"
+authors = ["Fred Liu <fredliu876@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+openai = "^1.27.0"
+toml = "^0.10.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
