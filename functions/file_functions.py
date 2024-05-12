@@ -23,7 +23,7 @@ def write_file(path: str, text: str) -> None:
     path -> the path of the file to overwrite or create
     text -> the text to write into the file
     """
-    with open(path, 'w') as file:
+    with open(path, 'w', encoding="utf-8") as file:
         file.write(text)
 
 
@@ -37,7 +37,7 @@ def insert_into_file(path: str, line_number: int, text: str) -> None:
     text -> the text to insert into the file
     """
     try:
-        with open(path, 'r') as file:
+        with open(path, 'r', encoding="utf-8") as file:
             lines = file.readlines()
         
         lines.insert(line_number - 1, text + '\n')
@@ -56,7 +56,7 @@ def append_file(path: str, text: str) -> None:
     path -> the path of the file to append text
     text -> the text to append to file
     """
-    with open(path, 'a') as file:
+    with open(path, 'a', encoding="utf-8") as file:
         file.write(text)
 
 
@@ -72,12 +72,12 @@ def modify_file(path: str, start_line_number: int, end_line_number: int, text: s
     """
     assert start_line_number <= end_line_number
 
-    with open(path, 'r') as file:
+    with open(path, 'r', encoding="utf-8") as file:
         lines = file.readlines()
 
     lines[start_line_number-1:end_line_number] = [text + '\n']
 
-    with open(path, 'w') as file:
+    with open(path, 'w', encoding="utf-8") as file:
         file.writelines(lines)
 
 
