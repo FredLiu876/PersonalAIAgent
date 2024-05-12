@@ -22,6 +22,8 @@ with manager:
     st.write("")
     st.write("Asking the agent to make meaningful git commits for each file changed:")
     st.video("manager_instructs_agent_to_add_video.mp4")
+    st.write("Not shown in the demo unfortunately, but the resulting ui successfully has the video added:")
+    st.image("resulting_ui.png")
 
     st.error("If you use gpt-3.5-turbo, this is essentially a regular AI agent")
     st.success("Works somewhat well with gpt-4-turbo")
