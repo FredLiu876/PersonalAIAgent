@@ -1,4 +1,4 @@
-
+import shlex
 import subprocess
 
 def run_bash_command(command: str) -> str:
@@ -10,8 +10,11 @@ def run_bash_command(command: str) -> str:
     """
 
     try:
-        result = subprocess.run(command, shell=True, check=True, capture_output=True, text=True, encoding="utf-8")
-        return result.stdout
+        result = subprocess.run(shlex.split(command), shell=True, check=True, stderr=subprocess.PIPE, text=True, encoding="utf-8")
+        return result.stderr
     except subprocess.CalledProcessError as e:
-        raise subprocess.CalledProcessError(f"Error executing bash command: {str(e)}")
+        print("HERE" + str(e) + str(e.stderr))
+
+
+print(run_bash_command("git commit -m 'Update files'"))
     

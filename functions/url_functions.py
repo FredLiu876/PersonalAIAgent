@@ -17,10 +17,10 @@ def read_text_from_url(url: str) -> str:
     soup = BeautifulSoup(html, features="html.parser")
 
     # kill all script and style elements
-    for script in soup(["script", "style", "nav"]):
+    for script in soup(["script", "style", "nav", "header", "footer"]):
         script.extract()    # rip it out
 
-    for class_name in ["header", "footer", "navbar", "sidebar"]:
+    for class_name in ["navbar", "sidebar"]:
         elements = soup.find_all(class_=class_name)
         for element in elements:
             element.extract()
