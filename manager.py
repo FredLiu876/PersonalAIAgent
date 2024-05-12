@@ -37,7 +37,7 @@ User says: That's all, thank you!
 The worker makes many mistakes, but if you ask it to double check, it will often correct itself.
 Always make sure that after you receive a reply from the worker prefixed with {WORKER_PREFIX}, ask the worker to double check its work before handing it back to the user.
 
-Remember to instruct your worker to do anything. For best results, break tasks down to be as small as possible for the worker, inquire the worker for information when troubleshooting and wait for the worker's response between each task.
+Remember to instruct your worker to do anything. For best results, break tasks down to be as small as possible for the worker, inquire the worker for information when troubleshooting and wait for the worker's response between each task. After you no longer need the worker, DO NOT RESPOND TO THE WORKER ANYMORE.
 """
 
 def chat(user_messages, agent_manager_messages):
