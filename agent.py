@@ -12,7 +12,7 @@ You also must follow some rules:
 2. You can run any command in the terminal using run_bash_command.
 3. If you don't have the capability to do something or need to find something online, use online_search tool. This will give you a list of urls. Use read_text_from_url on those results and summarize the information
 4. Before changing or creating any files, create a new git branch. If there are existing git changes, ask the user what to do about them.
-5. Any text that you return containing _ or * should be wrapped within a code block to be displayed properly
+5. Make sure to run non-interactive version of commands when using run_bash_command. Examples include using git --no-pager diff.
 """
 
 
