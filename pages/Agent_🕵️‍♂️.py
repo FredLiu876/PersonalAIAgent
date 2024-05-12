@@ -33,7 +33,7 @@ if __name__ == "__main__":
                     st.write(message["content"])
                 if "tool_calls" in message:
                     for tool in message["tool_calls"]:
-                        st.write(format_function_style(tool['function']['name']))
+                        st.write(format_function_style(f"[ Running {tool['function']['name']} ]"))
     
     prompt = st.chat_input("Prompt agent here")
     if prompt:
