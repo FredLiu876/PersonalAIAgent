@@ -1,16 +1,19 @@
 import functions
 import json
-import toml
 import traceback
 
-from openai import OpenAI
+from client import client, GPT_MODEL
 
-with open(".streamlit/secrets.toml", "r") as f:
-    data = toml.load(f)
+PREAMBLE = """
+You are an AI agent. You have access to many functions that you can call to help the user do certain things via tool calls.
 
-client = OpenAI(
-    api_key=data["OPENAI_API_KEY"]
-)
+You also must follow some rules:
+1. If a user asks for reading a file, double check the file path. Find the exact file path by listing files in the directory, then continue to list files in subdirectories where you think the file will be. If you can't find it, ask the user where the file is.
+2. You can run any command in the terminal using run_bash_command.
+3. For online reference, google search the topic, then choose a url that looks good and read it.
+4. Any text that you return containing _ or * should be wrapped within a code block to be displayed properly
+"""
+
 
 FUNCTION_LOGGING = "FUNCTION_USE_ALERT"
 
@@ -43,7 +46,7 @@ def combine_tool_chunks(tool_chunks):
 
 def chat(messages):
     stream = client.chat.completions.create(
-        model="gpt-3.5-turbo",
+        model=GPT_MODEL,
         messages=messages,
         tools=functions.tools_dictionary,
         stream=True,
@@ -58,12 +61,14 @@ def chat(messages):
             yield message_chunk
         if chunk.choices[0].delta.tool_calls:
             all_tool_chunks += chunk.choices[0].delta.tool_calls
+    if full_message:
+        yield "\n"
 
     if all_tool_chunks:
         tools = combine_tool_chunks(all_tool_chunks)
         messages.append({
             "role": "assistant",
-            "content": None,
+            "content": full_message if full_message else None,
             "tool_calls": tools,
         })
 
@@ -89,5 +94,5 @@ def chat(messages):
         for message_chunk in chat(messages):
             yield message_chunk
             full_message += message_chunk
-
-    messages.append({"role": "assistant", "content": full_message})
+    else:
+        messages.append({"role": "assistant", "content": full_message})

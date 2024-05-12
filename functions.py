@@ -6,6 +6,9 @@ import traceback
 FUNCTIONS_DIRECTORY = "./functions/"
 FULL_FUNCTIONS_DIRECTORY_PATH = os.path.join(os.path.dirname(__file__), FUNCTIONS_DIRECTORY)
 
+def explicitly_defined_function(func):
+    return inspect.getmodule(func) is None
+
 tools_dictionary = []
 
 _python_types_to_chatgpt_types = {
@@ -29,6 +32,8 @@ for module_name in _module_names:
 
     functions = inspect.getmembers(module, inspect.isfunction)
     for name, func in functions:
+        if not explicitly_defined_function(func):
+            continue
         # Make the function global so anything importing functions.py can call it
         globals()[name] = getattr(module, name)
 
@@ -40,7 +45,7 @@ for module_name in _module_names:
                 args_docstring = args_docstring.strip()
                 args_description_lines = args_docstring.split("\n")
                 for arg_line in args_description_lines:
-                    arg_name, arg_description = arg_line.split("-")
+                    arg_name, arg_description = arg_line.split(" -> ")
                     args_description[arg_name.strip()] = arg_description.strip()
             else:
                 function_description = func.__doc__
