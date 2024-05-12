@@ -34,12 +34,12 @@ def read_text_from_url(url: str) -> str:
 
     return text
 
-def google_search(query: str) -> str:
+def online_search(query: str) -> str:
     """
-    Returns a list of urls from a google search given a query.
+    Returns a list of urls from an online search powered by google given a query.
 
     PARAMETERS DESCRIPTION:
-    query -> The query to google search
+    query -> The query to search online
     """
 
     urls = ""
