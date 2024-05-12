@@ -10,7 +10,7 @@ def run_bash_command(command: str) -> str:
     """
 
     try:
-        result = subprocess.run(shlex.split(command), shell=True, check=True, stderr=subprocess.PIPE, text=True, encoding="utf-8")
+        result = subprocess.run(shlex.split(command), shell=True, check=True, capture_output=True, text=True, encoding="utf-8")
         return result.stdout
     except subprocess.CalledProcessError as e:
-        raise subprocess.CalledProcessError(e.stderr)
+        raise Exception(e.stderr)
