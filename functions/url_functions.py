@@ -34,6 +34,7 @@ def read_text_from_url(url: str) -> str:
 
     return text
 
+
 def online_search(query: str) -> str:
     """
     Returns a list of urls from an online search powered by google given a query.
