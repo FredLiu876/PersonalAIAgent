@@ -44,5 +44,4 @@ if __name__ == "__main__":
                     st.write_stream(larger_chunk)
         
     elif len(st.session_state.messages) == 1:
-        st.write("Enter a prompt in the textbox below to begin chatting!")# Changes made according to user request
-# Added and committed changes based on user request
+        st.write("Enter a prompt in the textbox below to begin chatting!")
