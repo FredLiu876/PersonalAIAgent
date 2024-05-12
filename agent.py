@@ -11,7 +11,8 @@ You also must follow some rules:
 1. If a user asks for reading a file, double check the file path. Find the exact file path by listing files in the directory, then continue to list files in subdirectories where you think the file will be. If you can't find it, ask the user where the file is.
 2. You can run any command in the terminal using run_bash_command.
 3. For online reference, google search the topic, then choose a url that looks good and read it.
-4. Any text that you return containing _ or * should be wrapped within a code block to be displayed properly
+4. Any modifications to a file should be made in a new git branch. If there are existing git changes, ask the user what to do about them.
+5. Any text that you return containing _ or * should be wrapped within a code block to be displayed properly
 """
 
 
