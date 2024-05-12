@@ -8,7 +8,7 @@ def read_file(path: str, show_line_numbers: bool = True) -> str:
     path -> the path of the file to read
     show_line_numbers -> flag to return text with line numbers
     """
-    with open(path, 'r') as file:
+    with open(path, 'r', encoding="utf-8") as file:
         lines = file.readlines()
         if show_line_numbers:
             lines = [f"{i+1}: {line}" for i, line in enumerate(lines)]
