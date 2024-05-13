@@ -10,10 +10,10 @@ with agent:
     st.write("You can ask it to edit files for you, ask about the weather today (Which stumps all LLMs) etc.")
     st.write("")
     st.write("Asking the agent about the weather:")
-    st.video("weather_today.mp4")
+    st.video("assets/weather_today.mp4")
     st.write("")
     st.write("Asking the agent to make meaningful git commits for each file changed:")
-    st.video("making_meaningful_git_commits_for_each_file.mp4")
+    st.video("assets/making_meaningful_git_commits_for_each_file.mp4")
     st.success("Works well with gpt-3.5-turbo")
 
 with manager:
@@ -21,9 +21,9 @@ with manager:
     
     st.write("")
     st.write("Asking the agent to make meaningful git commits for each file changed:")
-    st.video("manager_instructs_agent_to_add_video.mp4")
+    st.video("assets/manager_instructs_agent_to_add_video.mp4")
     st.write("Not shown in the demo unfortunately, but the resulting ui successfully has the video added:")
-    st.image("resulting_ui.png")
+    st.image("assets/resulting_ui.png")
 
     st.error("If you use gpt-3.5-turbo, this is essentially a regular AI agent")
     st.success("Works somewhat well with gpt-4-turbo")
