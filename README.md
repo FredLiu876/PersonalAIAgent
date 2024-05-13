@@ -2,6 +2,10 @@
 
 AI agent that will help you run things locally on your computer to assist with daily tasks!
 
+## Setup
+
+You'll need an OpenAI API key. Create a file at the path `.streamlit/secrets.toml` and enter this text OPENAI_API_KEY = "{OpenAI_API_key_here}"
+
 ## Running the app
 
 There are two agents, description for each is further down the README.
