@@ -2,6 +2,20 @@
 
 AI agent that will help you run things locally on your computer to assist with daily tasks!
 
+## Running the app
+
+There are two agents, description for each is further down the README.
+
+To run the agents in the terminal, simply run
+
+`python agent_terminal.py` or `python manager_terminal.py`
+
+To run the agents in streamlit, simply run
+
+`streamlit run Home.py`
+
+and navigate to the corresponding pages.
+
 #### Agent 🕵️‍♂️
 The agent is a language model that can determine within your chat when to call functions to help you do things automatically!
 You can ask it to edit files for you, ask about the weather today (which stumps all LLMs), etc.
