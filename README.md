@@ -25,7 +25,7 @@ The agent is a language model that can determine within your chat when to call f
 You can ask it to edit files for you, ask about the weather today (which stumps all LLMs), etc.
 Many of the commits were written entirely by the agent (including the git commands themselves)
 
-C:\Users\fredl\Programs\PersonalAIAgent\assets\moving_most_recent_video.mp4
+https://github.com/user-attachments/assets/aee0349d-671d-4f93-aa83-d9b48a610aea
 
 #### Manager 👨‍💼
 The agent manager is very experimental: It is an additional language model that manages the agent, aiming to give you better results on broad tasks with minimal user input.
