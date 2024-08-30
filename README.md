@@ -73,3 +73,16 @@ def new_function(input: str) -> str:
     """
     # Function logic here
 ```
+
+## Running Unit Tests
+
+To run the unit tests for the project, follow these steps:
+
+1. Navigate to the project directory where the `unit_tests` folder is located.
+2. Run the following command in your terminal:
+   
+   ```bash
+   python -m unittest discover -s unit_tests
+   ```
+
+This command will discover and execute all unit tests located in the `unit_tests` directory.
