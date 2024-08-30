@@ -1,10 +1,12 @@
 import os
+import shutil
 import PyPDF2
+
 
 def read_file(path: str, show_line_numbers: bool = True) -> str:
     """
     Returns the contents of a file at path, with line numbers at the beginning of each line if show_line_numbers is True.
-
+    
     PARAMETERS DESCRIPTION:
     path -> the path of the file to read
     show_line_numbers -> flag to return text with line numbers
@@ -19,7 +21,7 @@ def read_file(path: str, show_line_numbers: bool = True) -> str:
 def write_file(path: str, text: str) -> None:
     """
     Writes to the file at path or creates a new file at path with text
-
+    
     PARAMETERS DESCRIPTION:
     path -> the path of the file to overwrite or create
     text -> the text to write into the file
@@ -31,7 +33,7 @@ def write_file(path: str, text: str) -> None:
 def insert_into_file(path: str, line_number: int, text: str) -> None:
     """
     Inserts text into a file at the specified line number
-
+    
     PARAMETERS DESCRIPTION:
     path -> the path of the file to insert text into
     line_number -> the line number where the text should be inserted (1-indexed)
@@ -40,9 +42,7 @@ def insert_into_file(path: str, line_number: int, text: str) -> None:
     try:
         with open(path, 'r', encoding="utf-8") as file:
             lines = file.readlines()
-        
         lines.insert(line_number - 1, text + '\n')
-        
         with open(path, 'w') as file:
             file.writelines(lines)
     except Exception as e:
@@ -52,7 +52,7 @@ def insert_into_file(path: str, line_number: int, text: str) -> None:
 def append_file(path: str, text: str) -> None:
     """
     Appends to the file at path with text
-
+    
     PARAMETERS DESCRIPTION:
     path -> the path of the file to append text
     text -> the text to append to file
@@ -64,7 +64,7 @@ def append_file(path: str, text: str) -> None:
 def modify_file(path: str, start_line_number: int, end_line_number: int, text: str) -> None:
     """
     Replaces the range of start_line_number and end_line_number with text
-
+    
     PARAMETERS DESCRIPTION:
     path -> the path of the file to modify
     start_line_number -> starting from 1, beginning of range of text to be replaced (inclusive)
@@ -75,9 +75,7 @@ def modify_file(path: str, start_line_number: int, end_line_number: int, text: s
 
     with open(path, 'r', encoding="utf-8") as file:
         lines = file.readlines()
-
     lines[start_line_number-1:end_line_number] = [text + '\n']
-
     with open(path, 'w', encoding="utf-8") as file:
         file.writelines(lines)
 
@@ -85,13 +83,12 @@ def modify_file(path: str, start_line_number: int, end_line_number: int, text: s
 def list_files_and_dir(path: str, recursive: bool = False, max_results: int = 100) -> str:
     """
     Lists all files and directories within the path provided
-
+    
     PARAMETERS DESCRIPTION:
     path -> the path of the folder to list files
     recursive -> function will list files and subdirectories of the files
     max_results -> limits the number of files and subdirectories listed so that there's no chance this will take forever
     """
-
     count = 0
     result = ""
     if os.path.exists(path) and os.path.isdir(path):
@@ -111,10 +108,9 @@ def list_files_and_dir(path: str, recursive: bool = False, max_results: int = 10
                     break
                 current_path = os.path.join(path, item)
                 if os.path.isdir(current_path):
-                    current_path = os.path.join(current_path, '') # Show that it is a folder to differentiate
+                    current_path = os.path.join(current_path, '')  # Show that it is a folder to differentiate
                 result += current_path + "\n"
                 count += 1
-        
         return result
     else:
         raise ValueError(f"Path {path} does not exist or is not a folder!")
@@ -123,7 +119,7 @@ def list_files_and_dir(path: str, recursive: bool = False, max_results: int = 10
 def delete_file_or_dir(path: str) -> None:
     """
     Deletes a file or a directory and all its files at the provided path
-
+    
     PARAMETERS DESCRIPTION:
     path -> the path of the file or directory to delete
     """
@@ -143,10 +139,10 @@ def delete_file_or_dir(path: str) -> None:
 
 def read_pdf_to_text(pdf_path: str) -> str:
     """
-    Deletes a file or a directory and all its files at the provided path
-
+    Reads a PDF file and extracts text
+    
     PARAMETERS DESCRIPTION:
-    pdf_path -> the path of the file or directory to delete
+    pdf_path -> the path of the PDF file
     """
     text = ""
     with open(pdf_path, "rb") as file:
@@ -155,3 +151,37 @@ def read_pdf_to_text(pdf_path: str) -> str:
             page = reader.getPage(page_num)
             text += page.extractText()
     return text
+
+
+def move_file(src: str, dest: str) -> None:
+    """
+    Moves a file from src to dest
+    
+    PARAMETERS DESCRIPTION:
+    src -> the source file path
+    dest -> the destination file path
+    """
+    try:
+        if os.path.exists(src):
+            shutil.move(src, dest)
+        else:
+            raise FileNotFoundError(f"Source file '{src}' does not exist.")
+    except Exception as e:
+        raise Exception(f"Error moving file: {str(e)}")
+
+
+def copy_file(src: str, dest: str) -> None:
+    """
+    Copies a file from src to dest
+    
+    PARAMETERS DESCRIPTION:
+    src -> the source file path
+    dest -> the destination file path
+    """
+    try:
+        if os.path.exists(src):
+            shutil.copy2(src, dest)
+        else:
+            raise FileNotFoundError(f"Source file '{src}' does not exist.")
+    except Exception as e:
+        raise Exception(f"Error copying file: {str(e)}")
