@@ -4,7 +4,7 @@ AI agent that will help you run things locally on your computer to assist with d
 
 ## Setup
 
-You'll need an OpenAI API key. Create a file at the path `.streamlit/secrets.toml` and enter this text OPENAI_API_KEY = "{OpenAI_API_key_here}"
+You'll need an OpenAI API key. Run the `setup.sh OPENAI_API_KEY_HERE` script to configure it and create the secrets file for you.
 
 ## Running the app
 
