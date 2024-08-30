@@ -1,7 +1,13 @@
 import unittest
 import subprocess
 from unittest.mock import patch, MagicMock
-from functions.subprocess_functions import run_bash_command
+import os
+import sys
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+import functions
+
+run_bash_command = getattr(functions, "run_bash_command")
 
 class TestSubprocessFunctions(unittest.TestCase):
 

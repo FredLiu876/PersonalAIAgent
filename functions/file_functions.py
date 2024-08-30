@@ -141,7 +141,7 @@ def delete_file_or_dir(path: str) -> None:
         raise Exception(f"Error deleting file or directory: {str(e)}")
 
 
-def read_pdf_to_text(pdf_path: str):
+def read_pdf_to_text(pdf_path: str) -> str:
     """
     Deletes a file or a directory and all its files at the provided path
 

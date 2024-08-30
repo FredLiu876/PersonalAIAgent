@@ -1,6 +1,13 @@
 import unittest
 from unittest.mock import patch, MagicMock
-from functions.url_functions import read_text_from_url, online_search
+import os
+import sys
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+import functions
+
+read_text_from_url = getattr(functions, "read_text_from_url")
+online_search = getattr(functions, "online_search")
 
 class TestUrlFunctions(unittest.TestCase):
 
@@ -16,12 +23,9 @@ class TestUrlFunctions(unittest.TestCase):
         result = read_text_from_url('http://example.com')
         self.assertEqual(result, 'Hello World')
 
-    @patch('functions.url_functions.search')
-    def test_online_search(self, mock_search):
-        mock_search.return_value = ['http://example1.com', 'http://example2.com']
-        result = online_search('test query')
-        self.assertIn('http://example1.com', result)
-        self.assertIn('http://example2.com', result)
+    def test_online_search(self):
+        result = online_search('google')
+        self.assertIn("https://en.wikipedia.org/wiki/Google", result)
 
 if __name__ == '__main__':
     unittest.main()

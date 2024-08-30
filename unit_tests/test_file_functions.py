@@ -1,20 +1,19 @@
 import unittest
-import sys
 import os
+import sys
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-# Ensure the functions directory is in the path
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), 'functions')))
+import functions
 
-from functions.file_functions import (
-    read_file,
-    write_file,
-    insert_into_file,
-    append_file,
-    modify_file,
-    list_files_and_dir,
-    delete_file_or_dir,
-    read_pdf_to_text
-)
+read_file = getattr(functions, "read_file")
+write_file = getattr(functions, "write_file")
+insert_into_file = getattr(functions, "insert_into_file")
+append_file = getattr(functions, "append_file")
+modify_file = getattr(functions, "modify_file")
+list_files_and_dir = getattr(functions, "list_files_and_dir")
+delete_file_or_dir = getattr(functions, "delete_file_or_dir")
+read_pdf_to_text = getattr(functions, "read_pdf_to_text")
+
 
 class TestFileFunctions(unittest.TestCase):
 
