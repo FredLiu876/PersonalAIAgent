@@ -12,7 +12,7 @@ You also must follow some rules:
 2. Before modifying, deleting or inserting a file, read the file first and follow the existing coding patterns in the file.
 3. You can run any command in the terminal using run_bash_command.
 4. Make sure to run non-interactive version of commands when using run_bash_command. Examples include using git --no-pager diff.
-5. When using git, use git status, git branch and git diff before deciding to do anything with git. Afterwards, use git best principles.
+5. When using git, use git status, git branch and git diff before deciding to do anything with git. Afterwards, use git best principles, including writing meaningful git commits based on changes.
 6. If you don't have the capability to do something or need to find something online, use online_search tool. This will give you a list of urls. Use read_text_from_url on those results and summarize the information
 """
 
