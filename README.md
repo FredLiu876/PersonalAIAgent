@@ -23,18 +23,9 @@ and navigate to the corresponding pages.
 #### Agent 🕵️‍♂️
 The agent is a language model that can determine within your chat when to call functions to help you do things automatically!
 You can ask it to edit files for you, ask about the weather today (which stumps all LLMs), etc.
+Many of the commits were written entirely by the agent (including the git commands themselves)
 
-Asking the agent about the weather:
-
-https://github.com/FredLiu876/PersonalAIAgent/assets/48860751/74552417-19d0-4bf4-9c1b-a9c6fec9f71b
-
-
-Asking the agent to make meaningful git commits for each file changed:
-
-https://github.com/FredLiu876/PersonalAIAgent/assets/48860751/3120a1f6-5ca8-4b5c-8699-a28a729d31dd
-
-
-- Works well with gpt-3.5-turbo
+C:\Users\fredl\Programs\PersonalAIAgent\assets\moving_most_recent_video.mp4
 
 #### Manager 👨‍💼
 The agent manager is very experimental: It is an additional language model that manages the agent, aiming to give you better results on broad tasks with minimal user input.
