@@ -80,8 +80,9 @@ def chat(messages):
                 arguments = json.loads(tool["function"]["arguments"])
                 print_arguments = ""
                 for k, v in arguments.items():
-                    if len(v) >= 100:
-                        v = v[:100] + "..."
+                    if type(v) == str:
+                        if len(v) >= 100:
+                            v = v[:100] + "..."
                     print_arguments += f"\n\t( {k}: {v} )"
                 function_log = f"{FUNCTION_LOGGING} [ Running {func_name} with arguments {print_arguments} ]"
                 yield function_log
