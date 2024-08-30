@@ -1,4 +1,5 @@
 import os
+import PyPDF2
 
 def read_file(path: str, show_line_numbers: bool = True) -> str:
     """
@@ -138,3 +139,19 @@ def delete_file_or_dir(path: str) -> None:
             raise FileNotFoundError(f"Path '{path}' does not exist.")
     except Exception as e:
         raise Exception(f"Error deleting file or directory: {str(e)}")
+
+
+def read_pdf_to_text(pdf_path: str):
+    """
+    Deletes a file or a directory and all its files at the provided path
+
+    PARAMETERS DESCRIPTION:
+    pdf_path -> the path of the file or directory to delete
+    """
+    text = ""
+    with open(pdf_path, "rb") as file:
+        reader = PyPDF2.PdfFileReader(file)
+        for page_num in range(reader.numPages):
+            page = reader.getPage(page_num)
+            text += page.extractText()
+    return text
