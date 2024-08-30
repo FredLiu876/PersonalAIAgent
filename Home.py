@@ -8,13 +8,10 @@ agent, manager = st.tabs(["Agent 🕵️‍♂️", "Manager 👨‍💼"])
 with agent:
     st.write("The agent is a language model that can determine within your chat when to call functions to help you do things automatically!")
     st.write("You can ask it to edit files for you, ask about the weather today (Which stumps all LLMs) etc.")
+    st.write("The agent wrote the code, and the git commits themselves for many commits in this repository!")
     st.write("")
-    st.write("Asking the agent about the weather:")
-    st.video("assets/weather_today.mp4")
-    st.write("")
-    st.write("Asking the agent to make meaningful git commits for each file changed:")
-    st.video("assets/making_meaningful_git_commits_for_each_file.mp4")
-    st.success("Works well with gpt-3.5-turbo")
+    st.write("Agent pulls most recent video from game bar into project:")
+    st.video("assets/moving_most_recent_video.mp4")
 
 with manager:
     st.warning("The agent manager is very experimental: It is an additional language model that manages the agent, in an attempt to give you better results on very broad tasks with minimal user input.")
