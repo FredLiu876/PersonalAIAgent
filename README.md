@@ -1,6 +1,6 @@
 # Personal AI Agent
 
-AI agent that will help you run things locally on your computer to assist with daily tasks!
+AI agent that will help you run things locally on your computer to assist with daily tasks! Once the agent was setup with barebones functions to code and modify files, a lot of the other code was easily written and committed using the agent itself. Very fast development for small projects!
 
 ## Setup
 
