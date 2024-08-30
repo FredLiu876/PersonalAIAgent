@@ -77,9 +77,17 @@ def chat(messages):
             func_name = tool["function"]["name"]
             tool_response = f"Completed running {func_name}."
             try:
-                yield f"{FUNCTION_LOGGING} [ Running {func_name} with arguments: {tool['function']['arguments']} ]"
+                arguments = json.loads(tool["function"]["arguments"])
+                print_arguments = ""
+                for k, v in arguments.items():
+                    if len(v) >= 100:
+                        v = v[:100] + "..."
+                    print_arguments += f"\n\t( {k}: {v} )"
+                function_log = f"{FUNCTION_LOGGING} [ Running {func_name} with arguments {print_arguments} ]"
+                yield function_log
+                
                 func = getattr(functions, func_name)
-                func_result = func(**json.loads(tool["function"]["arguments"]))
+                func_result = func(**arguments)
                 if func_result:
                     tool_response += "\n" + func_result
             except Exception as e:
